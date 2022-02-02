@@ -6,6 +6,7 @@ import '@fontsource/nunito-sans/600.css'
 import '@fontsource/nunito-sans/800.css'
 
 import GlobalStyles from 'styles/global'
+import Header from 'components/Header'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -14,6 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>REST Countries API</title>
       </Head>
       <GlobalStyles />
+      <Header title="Where in the world?" />
       <Component {...pageProps} />
     </>
   )
