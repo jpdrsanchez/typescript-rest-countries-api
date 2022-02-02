@@ -1,7 +1,9 @@
+import HomeTemplate from 'templates/Home'
+
 const Home = () => {
   return (
     <>
-      <h1>REST Countries API</h1>
+      <HomeTemplate />
     </>
   )
 }
