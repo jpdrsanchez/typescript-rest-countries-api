@@ -9,24 +9,24 @@ describe('<Switch />', () => {
   it('Renders element and props correctly', () => {
     render(
       <Switch
-        isChecked={false}
         label="Dark Mode"
-        onInputChange={e => e.preventDefault()}
+        onInputChange={() => {
+          return
+        }}
+        value="dark"
       />
     )
 
     const input = screen.getByRole('checkbox', { name: /dark mode/i })
-    const img = screen.getByRole('img', { name: /set to dark mode/i })
+    const img = screen.getByRole('img', { name: /switch color mode/i })
 
     expect(input).toBeInTheDocument()
-    expect(input).not.toBeChecked()
+    expect(input).toBeChecked()
     expect(img).toBeInTheDocument()
   })
 
   it('Runs onChange function correctly', () => {
-    render(
-      <Switch isChecked={false} label="Dark Mode" onInputChange={mockChange} />
-    )
+    render(<Switch value="dark" label="Dark Mode" onInputChange={mockChange} />)
 
     const input = screen.getByRole('checkbox', { name: /dark mode/i })
 

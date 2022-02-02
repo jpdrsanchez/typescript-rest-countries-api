@@ -1,19 +1,31 @@
-import { ChangeEvent } from 'react'
+import { MouseEvent } from 'react'
 
 import Icon from './Icon'
 import * as S from './styles'
 
 type SwitchProps = {
   label: string
-  isChecked: boolean
-  onInputChange: (event: ChangeEvent<HTMLInputElement>) => void
+  value: string
+  onInputChange: <T extends unknown[]>(...args: T) => void
 }
 
-const Switch = ({ onInputChange, label, isChecked }: SwitchProps) => {
+const Switch = ({ onInputChange, label, value }: SwitchProps) => {
+  const handleChange = (e: MouseEvent) => {
+    e.preventDefault()
+    onInputChange()
+  }
+
   return (
-    <S.Wrapper>
-      <input type="checkbox" checked={isChecked} onChange={onInputChange} />
-      <Icon title="Set to Dark Mode" color="light" />
+    <S.Wrapper onClick={handleChange}>
+      <input
+        type="checkbox"
+        value={value}
+        checked={value === 'dark'}
+        onChange={() => {
+          return
+        }}
+      />
+      <Icon title="Switch Color Mode" />
       {label}
     </S.Wrapper>
   )

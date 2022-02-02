@@ -8,8 +8,30 @@ import '@fontsource/nunito-sans/800.css'
 import GlobalStyles from 'styles/global'
 import Header from 'components/Header'
 import Switch from 'components/Switch'
+import { useEffect, useState } from 'react'
+import { getStorageItem, setStorageItem } from 'services/localStorage'
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [colorMode, setColorMode] = useState(getStorageItem('colorMode'))
+
+  const toggleTheme = (colorMode: string) => {
+    if (colorMode === 'light') {
+      document.documentElement.classList.remove('dark')
+      setStorageItem('colorMode', 'light')
+    } else {
+      document.documentElement.classList.add('dark')
+      setStorageItem('colorMode', 'dark')
+    }
+  }
+
+  const onThemeChange = () => {
+    setColorMode(colorMode === 'light' ? 'dark' : 'light')
+  }
+
+  useEffect(() => {
+    toggleTheme(colorMode)
+  }, [colorMode])
+
   return (
     <>
       <Head>
@@ -19,8 +41,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Header title="Where in the world?">
         <Switch
           label="Dark Mode"
-          isChecked={false}
-          onInputChange={e => e.preventDefault()}
+          value={colorMode}
+          onInputChange={onThemeChange}
         />
       </Header>
       <Component {...pageProps} />
