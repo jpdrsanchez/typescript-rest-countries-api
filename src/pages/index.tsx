@@ -1,9 +1,7 @@
-import Main from 'components/Main'
-
 const Home = () => {
   return (
     <>
-      <Main />
+      <h1>REST Countries API</h1>
     </>
   )
 }
