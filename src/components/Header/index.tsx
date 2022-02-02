@@ -1,13 +1,14 @@
-import { ReactText } from 'react'
+import { ReactNode, ReactText } from 'react'
 
 import * as S from './styles'
 import Heading from 'components/common/Heading'
 
 type HeaderProps = {
   title: ReactText
+  children?: ReactNode
 }
 
-const Header = ({ title }: HeaderProps) => {
+const Header = ({ title, children }: HeaderProps) => {
   return (
     <S.Header>
       <S.HeaderContainer>
@@ -19,6 +20,7 @@ const Header = ({ title }: HeaderProps) => {
         >
           {title}
         </Heading>
+        {children}
       </S.HeaderContainer>
     </S.Header>
   )

@@ -8,9 +8,20 @@ jest.mock('components/common/Heading', () => ({
 }))
 
 describe('<Header />', () => {
-  it('Renders children correctly', () => {
+  it('Renders title correctly', () => {
     render(<Header title="title" />)
-    const childElement = screen.getByText(/title/i)
+    const titleElement = screen.getByText(/title/i)
+
+    expect(titleElement).toBeInTheDocument()
+  })
+
+  it('Renders children correctly', () => {
+    render(
+      <Header title="title">
+        <div data-testid="child" />
+      </Header>
+    )
+    const childElement = screen.getByTestId('child')
 
     expect(childElement).toBeInTheDocument()
   })
