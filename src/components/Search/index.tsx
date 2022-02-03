@@ -1,5 +1,6 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useMemo, useState } from 'react'
 
+import { debounce } from 'utils'
 import Icon from './Icon'
 import * as S from './styles'
 
@@ -15,11 +16,13 @@ const Search = (props: SearchProps) => {
 
   const [value, setValue] = useState(initialValue)
 
+  const debouncedSearch = useMemo(() => debounce(onSearch, 500), [onSearch])
+
   const handleChange = ({
     target: { value }
   }: ChangeEvent<HTMLInputElement>) => {
     setValue(value)
-    onSearch(value)
+    debouncedSearch(value)
   }
 
   return (
