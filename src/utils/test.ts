@@ -1,4 +1,4 @@
-import { debounce, findByTerm } from 'utils'
+import { debounce, findByTerm, formatNumber } from 'utils'
 
 describe('debounce', () => {
   jest.useFakeTimers()
@@ -53,7 +53,7 @@ describe('debounce', () => {
 })
 
 describe('findByTerm', () => {
-  it('Returns the searched items correctly', () => {
+  test('Returns the searched items correctly', () => {
     const mockSearchObject = {
       name: 'Brazil',
       originalName: 'Brasil',
@@ -88,5 +88,13 @@ describe('findByTerm', () => {
     expect(searchTwo).toBe(false)
     expect(searchThree).toBe(true)
     expect(searchFour).toBe(true)
+  })
+})
+
+describe('formatNumber', () => {
+  test('Format the number correctly', () => {
+    expect(formatNumber(1234)).toBe('1,234')
+    expect(formatNumber(1000000)).toBe('1,000,000')
+    expect(formatNumber(12000)).toBe('12,000')
   })
 })

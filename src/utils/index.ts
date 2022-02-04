@@ -24,3 +24,7 @@ export const findByTerm = <T, K extends keyof T>(
       .startsWith(value.trim().toLocaleLowerCase())
   })
 }
+
+export const formatNumber = (value: number) => {
+  return new Intl.NumberFormat('en-US').format(value)
+}
