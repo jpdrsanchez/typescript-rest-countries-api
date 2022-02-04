@@ -1,37 +1,46 @@
 import Container from 'components/common/Container'
 import Dropdown, { DropdownItem } from 'components/Dropdown'
 import Search from 'components/Search'
+import { useState } from 'react'
+import { findByTerm } from 'utils'
 import * as S from './styles'
 
-const regions: DropdownItem[] = [
-  {
-    id: 1,
-    slug: 'africa',
-    title: 'Africa'
-  },
-  {
-    id: 2,
-    slug: 'americas',
-    title: 'America'
-  },
-  {
-    id: 3,
-    slug: 'asia',
-    title: 'Asia'
-  },
-  {
-    id: 4,
-    slug: 'europe',
-    title: 'Europe'
-  },
-  {
-    id: 5,
-    slug: 'oceania',
-    title: 'Oceania'
-  }
-]
+type Countrie = {
+  name: string
+  region: string
+  population: number
+  capital: string
+}
 
-const HomeTemplate = () => {
+export type HomeTemplateProps = {
+  countries: Countrie[]
+  regions: DropdownItem[]
+}
+
+const HomeTemplate = ({
+  countries: dataCountries,
+  regions
+}: HomeTemplateProps) => {
+  const [countries, setCountries] = useState(dataCountries)
+
+  const onSelectRegion = (region: string) => {
+    setCountries(
+      dataCountries.filter(
+        countrie => countrie.region.toLocaleLowerCase() === region
+      )
+    )
+  }
+
+  const onSearch = (value: string) => {
+    if (value.trim().length) {
+      setCountries(
+        dataCountries.filter(countrie => {
+          return findByTerm(value, countrie, ['name'])
+        })
+      )
+    } else setCountries(dataCountries)
+  }
+
   return (
     <S.Wrapper>
       <Container>
@@ -39,17 +48,15 @@ const HomeTemplate = () => {
           <Search
             label="Search for a country"
             placeholder="Search for a country…"
-            onSearch={value => value}
+            onSearch={onSearch}
           />
           <Dropdown
             title="Filter by Region"
             options={regions}
-            onItemSelect={() => {
-              return
-            }}
+            onItemSelect={onSelectRegion}
           />
         </S.FilterArea>
-        <section></section>
+        <section>{countries.map(countrie => countrie.name)}</section>
       </Container>
     </S.Wrapper>
   )

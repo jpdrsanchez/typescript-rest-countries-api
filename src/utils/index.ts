@@ -11,3 +11,16 @@ export const debounce = <T extends unknown[]>(
     }, delay)
   }
 }
+
+export const findByTerm = <T, K extends keyof T>(
+  value: string,
+  itemToFilter: T,
+  filteredFields: K[]
+) => {
+  return filteredFields.some(field => {
+    return `${itemToFilter[field]}`
+      .trim()
+      .toLocaleLowerCase()
+      .startsWith(value.trim().toLocaleLowerCase())
+  })
+}

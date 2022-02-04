@@ -1,4 +1,4 @@
-import { debounce } from 'utils'
+import { debounce, findByTerm } from 'utils'
 
 describe('debounce', () => {
   jest.useFakeTimers()
@@ -49,5 +49,44 @@ describe('debounce', () => {
     expect(callbackMock).not.toHaveBeenCalled()
     jest.advanceTimersByTime(500)
     expect(callbackMock).toHaveBeenCalledTimes(1)
+  })
+})
+
+describe('findByTerm', () => {
+  it('Returns the searched items correctly', () => {
+    const mockSearchObject = {
+      name: 'Brazil',
+      originalName: 'Brasil',
+      code: 'BR'
+    }
+
+    const searchOne = findByTerm('Br', mockSearchObject, [
+      'code',
+      'name',
+      'originalName'
+    ])
+
+    const searchTwo = findByTerm('Bre', mockSearchObject, [
+      'code',
+      'name',
+      'originalName'
+    ])
+
+    const searchThree = findByTerm('BraSil', mockSearchObject, [
+      'code',
+      'name',
+      'originalName'
+    ])
+
+    const searchFour = findByTerm(' brazil ', mockSearchObject, [
+      'code',
+      'name',
+      'originalName'
+    ])
+
+    expect(searchOne).toBe(true)
+    expect(searchTwo).toBe(false)
+    expect(searchThree).toBe(true)
+    expect(searchFour).toBe(true)
   })
 })
