@@ -1,3 +1,4 @@
+import Card from 'components/Card'
 import Container from 'components/common/Container'
 import Dropdown, { DropdownItem } from 'components/Dropdown'
 import Search from 'components/Search'
@@ -5,11 +6,15 @@ import { useState } from 'react'
 import { findByTerm } from 'utils'
 import * as S from './styles'
 
-type Countrie = {
+export type Countrie = {
   name: string
   region: string
   population: number
   capital: string
+  alpha3Code: string
+  flags: {
+    svg: string
+  }
 }
 
 export type HomeTemplateProps = {
@@ -56,7 +61,11 @@ const HomeTemplate = ({
             onItemSelect={onSelectRegion}
           />
         </S.FilterArea>
-        <section>{countries.map(countrie => countrie.name)}</section>
+        <section>
+          {countries.map(countrie => (
+            <Card key={countrie.alpha3Code} {...countrie} />
+          ))}
+        </section>
       </Container>
     </S.Wrapper>
   )
