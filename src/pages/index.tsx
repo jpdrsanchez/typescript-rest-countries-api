@@ -1,7 +1,7 @@
 import { DropdownItem } from 'components/Dropdown'
 import { GetStaticProps } from 'next'
 import { getAll } from 'services/api'
-import HomeTemplate, { HomeTemplateProps } from 'templates/Home'
+import HomeTemplate, { Countrie, HomeTemplateProps } from 'templates/Home'
 
 const Home = (props: HomeTemplateProps) => {
   return (
@@ -40,9 +40,10 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   ]
 
-  let countries
+  let countries: Array<unknown>
+
   try {
-    const { data } = await getAll()
+    const { data }: { data: Countrie[] } = await getAll()
     countries = data
   } catch (error) {
     countries = []
