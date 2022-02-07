@@ -62,9 +62,11 @@ const HomeTemplate = ({
           />
         </S.FilterArea>
         <section>
-          {countries.map(countrie => (
-            <Card key={countrie.alpha3Code} {...countrie} />
-          ))}
+          <S.CountriesNav>
+            {countries.map(countrie => (
+              <Card key={countrie.alpha3Code} {...countrie} />
+            ))}
+          </S.CountriesNav>
         </section>
       </Container>
     </S.Wrapper>

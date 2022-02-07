@@ -9,7 +9,8 @@ const customJestConfig = {
   collectCoverageFrom: [
     'src/**/*.ts(x)',
     '!src/pages/**/*.tsx',
-    '!src/styles/**/*.tsx'
+    '!src/styles/**/*.tsx',
+    '!src/templates/**/*.tsx'
   ],
   setupFilesAfterEnv: ['<rootDir>/jest-setup.ts'],
   modulePaths: ['<rootDir>/src/']

@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import { Countrie } from 'templates/Home'
 import Card from '.'
 
-const countrieMock: Countrie = {
+export const countrieMock: Countrie = {
   name: 'Brazil',
   alpha3Code: 'BRA',
   capital: 'Brasília',
