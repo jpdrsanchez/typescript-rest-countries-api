@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
 import { getAll, getByCode } from 'services/api'
 import { Countrie } from 'templates/Home'
+import Loading from 'templates/Loading'
 
 type DetailsParams = {
   code: string
@@ -14,7 +15,7 @@ type DetailsProps = {
 
 const Details = (props: DetailsProps) => {
   const { isFallback } = useRouter()
-  if (isFallback) return <div>Carregando...</div>
+  if (isFallback) return <Loading />
   return <div>{props.countrie.name}</div>
 }
 
@@ -33,7 +34,7 @@ export const getStaticProps: GetStaticProps = async context => {
     const { code } = context.params as DetailsParams
     const { data: countrie } = await getByCode(code)
 
-    if (countrie.status === 404) throw new Error()
+    if (countrie.status >= 400) throw new Error()
 
     return {
       props: {
