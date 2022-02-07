@@ -2,7 +2,7 @@ import * as S from './styles'
 import { Earth, Map, Search } from '@styled-icons/ionicons-sharp'
 import { CSSProperties, useEffect, useState } from 'react'
 
-const Loading = () => {
+const LoadingTemplate = () => {
   const [visible, setVisible] = useState(0)
 
   const updateVisibleIndex = () => {
@@ -34,4 +34,4 @@ const Loading = () => {
   )
 }
 
-export default Loading
+export default LoadingTemplate

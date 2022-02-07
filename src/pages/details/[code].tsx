@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
 import { getAll, getByCode } from 'services/api'
 import { Countrie } from 'templates/Home'
-import Loading from 'templates/Loading'
+import LoadingTemplate from 'templates/Loading'
 
 type DetailsParams = {
   code: string
@@ -15,7 +15,7 @@ type DetailsProps = {
 
 const Details = (props: DetailsProps) => {
   const { isFallback } = useRouter()
-  if (isFallback) return <Loading />
+  if (isFallback) return <LoadingTemplate />
   return <div>{props.countrie.name}</div>
 }
 
