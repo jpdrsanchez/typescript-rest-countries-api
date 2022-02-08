@@ -14,7 +14,7 @@ const Card = (props: Countrie) => {
   } = props
 
   return (
-    <Link href="/" passHref>
+    <Link href={`/details/${props.alpha3Code.toLocaleLowerCase()}`} passHref>
       <S.Card>
         <article>
           <img src={svg} alt={`Flag of ${name}`} />
