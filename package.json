@@ -13,6 +13,7 @@
   "dependencies": {
     "@fontsource/nunito-sans": "^4.5.2",
     "@styled-icons/ionicons-sharp": "^10.34.0",
+    "@types/nprogress": "^0.2.0",
     "axios": "^0.25.0",
     "next": "^12.0.10",
     "nprogress": "^0.2.0",
