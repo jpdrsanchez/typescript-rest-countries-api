@@ -1,5 +1,4 @@
 import { AppProps } from 'next/app'
-import Head from 'next/head'
 import '@fontsource/nunito-sans/300.css'
 import '@fontsource/nunito-sans/400.css'
 import '@fontsource/nunito-sans/600.css'
@@ -13,6 +12,7 @@ import Switch from 'components/Switch'
 import { useEffect, useState } from 'react'
 import { getStorageItem, setStorageItem } from 'services/localStorage'
 import '../../public/nprogress.css'
+import Head from 'next/head'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [colorMode, setColorMode] = useState(getStorageItem('colorMode'))
@@ -58,7 +58,14 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>REST Countries API</title>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="shortcut icon" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
+        <meta
+          name="description"
+          content="REST Countries API with color theme switcher is a Frontendmentor Challenge to improve your frontend skills"
+        />
       </Head>
       <GlobalStyles />
       <Header title="Where in the world?">

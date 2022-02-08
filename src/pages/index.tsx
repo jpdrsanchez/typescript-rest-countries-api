@@ -1,11 +1,15 @@
 import { DropdownItem } from 'components/Dropdown'
 import { GetStaticProps } from 'next'
+import Head from 'next/head'
 import { getAll } from 'services/api'
 import HomeTemplate, { Country, HomeTemplateProps } from 'templates/Home'
 
 const Home = (props: HomeTemplateProps) => {
   return (
     <div className="fade">
+      <Head>
+        <title>Home | Where in the world?</title>
+      </Head>
       <HomeTemplate {...props} />
     </div>
   )

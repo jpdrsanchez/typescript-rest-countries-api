@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
 import { getAll, getByCode, getSomeByCode } from 'services/api'
@@ -15,11 +16,17 @@ const Details = (props: DetailsTemplateProps) => {
   if (isFallback)
     return (
       <div className="fade">
+        <Head>
+          <title>Loading... | Where in the world?</title>
+        </Head>
         <LoadingTemplate />
       </div>
     )
   return (
     <div className="fade">
+      <Head>
+        <title>{props.country.name} | Where in the world?</title>
+      </Head>
       <DetailsTemplate {...props} />
     </div>
   )
