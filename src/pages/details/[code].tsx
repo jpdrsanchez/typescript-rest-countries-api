@@ -12,8 +12,17 @@ type DetailsParams = {
 
 const Details = (props: DetailsTemplateProps) => {
   const { isFallback } = useRouter()
-  if (isFallback) return <LoadingTemplate />
-  return <DetailsTemplate {...props} />
+  if (isFallback)
+    return (
+      <div className="fade">
+        <LoadingTemplate />
+      </div>
+    )
+  return (
+    <div className="fade">
+      <DetailsTemplate {...props} />
+    </div>
+  )
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {

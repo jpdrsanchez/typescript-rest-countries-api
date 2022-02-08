@@ -1,5 +1,12 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, keyframes } from 'styled-components'
 import { reset } from './reset'
+
+const fade = keyframes`
+  to {
+    opacity: 1;
+    transform: none;
+  }
+`
 
 const GlobalStyles = createGlobalStyle`
 
@@ -48,6 +55,12 @@ const GlobalStyles = createGlobalStyle`
   img {
     display: block;
     max-width: 100%;
+  }
+
+  .fade {
+    opacity: 0;
+    transform: translateY(1.25rem);
+    animation: ${fade} .5s forwards;
   }
 `
 

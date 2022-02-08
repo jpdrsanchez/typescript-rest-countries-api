@@ -5,9 +5,9 @@ import HomeTemplate, { Country, HomeTemplateProps } from 'templates/Home'
 
 const Home = (props: HomeTemplateProps) => {
   return (
-    <>
+    <div className="fade">
       <HomeTemplate {...props} />
-    </>
+    </div>
   )
 }
 
