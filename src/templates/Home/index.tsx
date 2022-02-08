@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { findByTerm } from 'utils'
 import * as S from './styles'
 
-export type Countrie = {
+export type Country = {
   name: string
   nativeName: string
   subregion: string
@@ -27,7 +27,7 @@ export type Countrie = {
 }
 
 export type HomeTemplateProps = {
-  countries: Countrie[]
+  countries: Country[]
   regions: DropdownItem[]
 }
 
@@ -40,7 +40,7 @@ const HomeTemplate = ({
   const onSelectRegion = (region: string) => {
     setCountries(
       dataCountries.filter(
-        countrie => countrie.region.toLocaleLowerCase() === region
+        country => country.region.toLocaleLowerCase() === region
       )
     )
   }
@@ -48,8 +48,8 @@ const HomeTemplate = ({
   const onSearch = (value: string) => {
     if (value.trim().length) {
       setCountries(
-        dataCountries.filter(countrie => {
-          return findByTerm(value, countrie, ['name'])
+        dataCountries.filter(country => {
+          return findByTerm(value, country, ['name'])
         })
       )
     } else setCountries(dataCountries)
@@ -72,8 +72,8 @@ const HomeTemplate = ({
         </S.FilterArea>
         <section>
           <S.CountriesNav>
-            {countries.map(countrie => (
-              <Card key={countrie.alpha3Code} {...countrie} />
+            {countries.map(country => (
+              <Card key={country.alpha3Code} {...country} />
             ))}
           </S.CountriesNav>
         </section>

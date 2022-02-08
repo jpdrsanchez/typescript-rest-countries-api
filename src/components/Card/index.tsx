@@ -1,10 +1,10 @@
 import Heading from 'components/common/Heading'
 import Link from 'next/link'
-import { Countrie } from 'templates/Home'
+import { Country } from 'templates/Home'
 import { formatNumber } from 'utils'
 import * as S from './styles'
 
-const Card = (props: Countrie) => {
+const Card = (props: Country) => {
   const {
     capital,
     flags: { svg },

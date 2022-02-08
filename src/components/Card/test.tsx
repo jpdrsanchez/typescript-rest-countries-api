@@ -1,19 +1,24 @@
 import { render, screen } from '@testing-library/react'
-import { Countrie } from 'templates/Home'
+import { Country } from 'templates/Home'
 import Card from '.'
 
-export const countrieMock: Countrie = {
+export const countryMock: Country = {
   name: 'Brazil',
   alpha3Code: 'BRA',
   capital: 'Brasília',
   region: 'Americas',
   population: 212559409,
-  flags: { svg: 'https://flagcdn.com/br.svg' }
+  flags: { svg: 'https://flagcdn.com/br.svg' },
+  currencies: [],
+  languages: [],
+  nativeName: 'Brasil',
+  subregion: 'South America',
+  topLevelDomain: []
 }
 
 describe('<Card />', () => {
   it('Renders correctly', () => {
-    render(<Card {...countrieMock} />)
+    render(<Card {...countryMock} />)
 
     const cardImage = screen.getByRole('img', { name: /flag of brazil/i })
     expect(cardImage).toBeInTheDocument()

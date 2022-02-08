@@ -1,18 +1,18 @@
 import Heading from 'components/common/Heading'
 import List from 'components/List'
 import Link from 'next/link'
-import { Countrie } from 'templates/Home'
+import { Country } from 'templates/Home'
 import { formatNumber } from 'utils'
 import Icon from './Icon'
 import * as S from './styles'
 
 export type DetailsTemplateProps = {
-  countrie: Countrie
-  borders: Countrie[]
+  country: Country
+  borders: Country[]
 }
 
 const DetailsTemplate = (props: DetailsTemplateProps) => {
-  const { countrie, borders } = props
+  const { country, borders } = props
   return (
     <S.Wrapper>
       <S.WrapperContainer>
@@ -24,7 +24,7 @@ const DetailsTemplate = (props: DetailsTemplateProps) => {
         </Link>
         <S.Main>
           <S.Flag>
-            <img src={countrie.flags.svg} alt={`Flag Of ${countrie.name}`} />
+            <img src={country.flags.svg} alt={`Flag Of ${country.name}`} />
           </S.Flag>
           <S.Informations>
             <Heading
@@ -33,39 +33,57 @@ const DetailsTemplate = (props: DetailsTemplateProps) => {
               lineHeight={{ mobile: 30, desktop: 44 }}
               weight={800}
             >
-              {countrie.name}
+              {country.name}
             </Heading>
             <S.Lists>
               <List
-                nativeName={countrie.nativeName}
-                population={formatNumber(countrie.population)}
-                region={countrie.region}
-                subregion={countrie.subregion}
-                capital={countrie.capital}
+                nativeName={country.nativeName}
+                population={
+                  country.population ? formatNumber(country.population) : '-'
+                }
+                region={country.region || '-'}
+                subregion={country.subregion || '-'}
+                capital={country.capital || '-'}
               />
               <List
-                topLevelDomain={countrie.topLevelDomain.join(', ')}
-                currencies={countrie.currencies
-                  .map(currencie => currencie.name)
-                  .join(', ')}
-                languages={countrie.languages
-                  .map(language => language.name)
-                  .join(', ')}
+                topLevelDomain={
+                  country.topLevelDomain.length
+                    ? country.topLevelDomain.join(', ')
+                    : '-'
+                }
+                currencies={
+                  country.currencies.length
+                    ? country.currencies
+                        .map(currencie => currencie.name)
+                        .join(', ')
+                    : '-'
+                }
+                languages={
+                  country.languages.length
+                    ? country.languages
+                        .map(language => language.name)
+                        .join(', ')
+                    : '-'
+                }
               />
             </S.Lists>
             <S.Borders>
               <h3>Border Countries:</h3>
-              <ul>
-                {borders.map(border => (
-                  <li key={border.alpha3Code}>
-                    <Link
-                      href={`/details/${border.alpha3Code.toLocaleLowerCase()}`}
-                    >
-                      {border.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              {borders.length ? (
+                <ul>
+                  {borders.map(border => (
+                    <li key={border.alpha3Code}>
+                      <Link
+                        href={`/details/${border.alpha3Code.toLocaleLowerCase()}`}
+                      >
+                        {border.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                '-'
+              )}
             </S.Borders>
           </S.Informations>
         </S.Main>

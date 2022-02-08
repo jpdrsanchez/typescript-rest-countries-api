@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
 import { getAll, getByCode, getSomeByCode } from 'services/api'
 import DetailsTemplate, { DetailsTemplateProps } from 'templates/Details'
-import { Countrie } from 'templates/Home'
+import { Country } from 'templates/Home'
 import LoadingTemplate from 'templates/Loading'
 
 type DetailsParams = {
@@ -17,10 +17,10 @@ const Details = (props: DetailsTemplateProps) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { data }: { data: Countrie[] } = await getAll()
+  const { data }: { data: Country[] } = await getAll()
 
-  const paths = data.map(countrie => ({
-    params: { code: countrie.alpha3Code }
+  const paths = data.map(country => ({
+    params: { code: country.alpha3Code }
   }))
 
   return { paths, fallback: true }
@@ -29,15 +29,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async context => {
   try {
     const { code } = context.params as DetailsParams
-    const { data: countrie } = await getByCode(code)
+    const { data: country } = await getByCode(code)
 
-    const borders = await getSomeByCode(countrie.borders)
+    const borders = country.borders ? await getSomeByCode(country.borders) : []
 
-    if (countrie.status >= 400) throw new Error()
+    if (country.status >= 400) throw new Error()
 
     return {
       props: {
-        countrie,
+        country: { topLevelDomain: [], currencies: [], ...country },
         borders
       }
     }
