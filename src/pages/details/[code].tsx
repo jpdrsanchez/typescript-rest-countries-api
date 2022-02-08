@@ -1,7 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
-import { getAll, getByCode } from 'services/api'
+import { getAll, getByCode, getSomeByCode } from 'services/api'
+import DetailsTemplate, { DetailsTemplateProps } from 'templates/Details'
 import { Countrie } from 'templates/Home'
 import LoadingTemplate from 'templates/Loading'
 
@@ -9,14 +10,10 @@ type DetailsParams = {
   code: string
 } & ParsedUrlQuery
 
-type DetailsProps = {
-  countrie: Countrie
-}
-
-const Details = (props: DetailsProps) => {
+const Details = (props: DetailsTemplateProps) => {
   const { isFallback } = useRouter()
   if (isFallback) return <LoadingTemplate />
-  return <div>{props.countrie.name}</div>
+  return <DetailsTemplate {...props} />
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -34,11 +31,14 @@ export const getStaticProps: GetStaticProps = async context => {
     const { code } = context.params as DetailsParams
     const { data: countrie } = await getByCode(code)
 
+    const borders = await getSomeByCode(countrie.borders)
+
     if (countrie.status >= 400) throw new Error()
 
     return {
       props: {
-        countrie
+        countrie,
+        borders
       }
     }
   } catch {

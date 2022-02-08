@@ -19,5 +19,5 @@ export const getByCode = async (code: string) => api.get(ENDPOINTS.code(code))
 
 export const getSomeByCode = async (codes: string[]) => {
   const codePromises = codes.map(code => api.get(ENDPOINTS.code(code)))
-  return Promise.all(codePromises)
+  return Promise.all(codePromises).then(codes => codes.map(code => code.data))
 }

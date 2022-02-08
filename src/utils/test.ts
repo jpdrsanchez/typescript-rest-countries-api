@@ -1,4 +1,4 @@
-import { debounce, findByTerm, formatNumber } from 'utils'
+import { capitalize, debounce, findByTerm, formatNumber } from 'utils'
 
 describe('debounce', () => {
   jest.useFakeTimers()
@@ -96,5 +96,13 @@ describe('formatNumber', () => {
     expect(formatNumber(1234)).toBe('1,234')
     expect(formatNumber(1000000)).toBe('1,000,000')
     expect(formatNumber(12000)).toBe('12,000')
+  })
+})
+
+describe('capitalize', () => {
+  test('Format the string correctly', () => {
+    expect(capitalize('brasil')).toBe('Brasil')
+    expect(capitalize('mexico')).toBe('Mexico')
+    expect(capitalize('argentina')).toBe('Argentina')
   })
 })

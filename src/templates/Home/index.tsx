@@ -8,10 +8,19 @@ import * as S from './styles'
 
 export type Countrie = {
   name: string
+  nativeName: string
+  subregion: string
+  topLevelDomain: string[]
   region: string
   population: number
   capital: string
   alpha3Code: string
+  currencies: {
+    name: string
+  }[]
+  languages: {
+    name: string
+  }[]
   flags: {
     svg: string
   }

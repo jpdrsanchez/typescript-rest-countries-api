@@ -28,3 +28,6 @@ export const findByTerm = <T, K extends keyof T>(
 export const formatNumber = (value: number) => {
   return new Intl.NumberFormat('en-US').format(value)
 }
+
+export const capitalize = (value: string) =>
+  value[0].toUpperCase() + value.slice(1)
