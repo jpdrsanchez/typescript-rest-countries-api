@@ -1,34 +1,79 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Frontend Mentor - REST Countries API with color theme switcher solution
 
-## Getting Started
+This is a solution to the [REST Countries API with color theme switcher challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-First, run the development server:
+## Table of contents
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Overview
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### The challenge
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Users should be able to:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- See all countries from the API on the homepage
+- Search for a country using an `input` field
+- Filter countries by region
+- Click on a country to see more detailed information on a separate page
+- Click through to the border countries on the detail page
+- Toggle the color scheme between light and dark mode *(optional)*
 
-## Learn More
+### Screenshot
 
-To learn more about Next.js, take a look at the following resources:
+![](./screenshot.jpg)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Links
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Solution URL: [https://github.com/jpdrsanchez/typescript-rest-countries-api](https://github.com/jpdrsanchez/typescript-rest-countries-api)
+- Live Site URL: [http://typescript-rest-countries-api.vercel.app/](http://typescript-rest-countries-api.vercel.app/)
 
-## Deploy on Vercel
+## My process
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Built with
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
+- [Typescript](https://www.typescriptlang.org/) - Syntactical superset of JavaScript
+- [React](https://reactjs.org/) - JS library
+- [Next.js](https://nextjs.org/) - React framework
+- [Styled Components](https://styled-components.com/) - For styles
+- [Axios](https://axios-http.com/) - Http Client
+- [Jest](https://jestjs.io/) - Javascript Testing Framework
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) - React Testing Utilities
+
+### What I learned
+
+In this project I could learn a lot about using `typescript` and learned a lot about `unit testing` with `jest` and `RTL`.
+
+### Continued development
+
+I want to continue focusing on the study of `unit tests` with `jest` and I also want to start studying `integration tests`.
+
+### Useful resources
+
+- [NextJS Docs](https://nextjs.org/docs/getting-started)
+- [Styled Components Docs](https://styled-components.com/docs)
+- [Typescript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
+- [Jest Docs](https://jestjs.io/docs/getting-started)
+- [RTL Dosc](https://testing-library.com/docs/react-testing-library/intro)
+
+## Author
+
+- Website - [João Pedro Sanchez](https://github.com/jpdrsanchez)
+- Frontend Mentor - [@jpdrsanchez](https://www.frontendmentor.io/profile/jpdrsanchez)
+- Twitter - [@jpdrsanchez](https://twitter.com/jpdrsanchez)
+- Linkedin - [jpdrsanchez](https://www.linkedin.com/in/jpdrsanchez/)
